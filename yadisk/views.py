@@ -2,10 +2,6 @@ from django.shortcuts import render
 import requests
 from .forms import PublicUrlForms
 
-#https://oauth.yandex.ru/authorize?response_type=token&client_id=462b83b5ed6d4b9f952ecf8c19d61b99
-
-URL = 'https://cloud-api.yandex.net/v1/disk/public/resources?public_key=y0_AgAAAABbK2qsAADLWwAAAAEQnq2OAABIJBiEampBTaj4IqQMkpXCrsmmoA'
-
 
 def get_disk(public_key):
     """Получение списка файлов/папок с помощью публичной ссылки"""
