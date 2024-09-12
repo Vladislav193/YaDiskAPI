@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru"> <!-- Язык сайта - русский -->
+  <head>
+    <meta charset="utf-8"> <!-- Кодировка сайта -->
+  </head>
+  <body>
+    <header>
+    </header>
+	<main>
+      {% block content %}
+      <article>
+        <form method="post">
+          {% csrf_token %}
+          <label> Введите Вашу публичную ссылку на Яндекс.Диск </label>
+          {{ form }}
+          <input type="submit" value="OK">
+        </form>
+      </article>
+      {% for post in content %}
+      <article>
+        <ul>
+          <li>
+            {% if post.type == 'dir'%}
+            Папка: {{ post.name }}
+
+            {% elif post.type == 'file'%}
+            Файл: {{ post.name }}
+
+            <a href = "{{post.file}}">Скачать файл</a>
+            {% endif %}
+          </li>
+        </ul>
+      </article>
+      {% endfor %}
+      {% endblock %}
+	</main>
+    <footer>
+    </footer>
+  </body>
+</html>
